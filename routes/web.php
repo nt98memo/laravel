@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Middleware\BeforeHelloMiddleware;
+use App\Http\Middleware\AfterHelloMiddleware;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +17,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/hello/index', 'HelloController@index');
+Route::get('/resource/index', 'ResourceController@index')->middleware(BeforeHelloMiddleware::class)->middleware(AfterHelloMiddleware::class);
+Route::get('/resource/create', 'ResourceController@create');
+Route::post('/resource/store', 'ResourceController@store');
+Route::get('/resource/edit', 'ResourceController@edit');
+Route::post('/resource/update', 'ResourceController@update');
+Route::get('/resource/show', 'ResourceController@show');
+Route::post('/resource/destroy', 'ResourceController@destroy');
