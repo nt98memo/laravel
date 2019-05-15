@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\HelloRequest;
 
 class ResourceController extends Controller
 {
@@ -36,9 +37,8 @@ class ResourceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HelloRequest $request)
     {
-
 
         $data = [
             'textInput' => $request->textInput,
